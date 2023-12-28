@@ -1,0 +1,16 @@
+# Ignore all by default
+*
+
+# Explicitly ignore
+.env
+node_modules/
+.history/
+.vscode/
+
+# Unignore these
+!package.json
+!package-lock.json
+!.gitignore
+
+!backend/
+!backend/**/*
