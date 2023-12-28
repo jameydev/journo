@@ -10,6 +10,7 @@
   "author": "Jamey Bryce",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.3.1",
