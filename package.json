@@ -5,7 +5,8 @@
   "main": "backend/server.js",
   "type": "module",
   "scripts": {
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
   },
   "author": "Jamey Bryce",
   "license": "ISC",
