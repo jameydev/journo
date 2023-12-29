@@ -3,7 +3,8 @@ import {
     getEntries,
     getEntryById,
     createEntry,
-    updateEntry
+    updateEntry,
+    deleteEntry
 } from '../controllers/entryController.js';
 import { protect } from '../middleware/authMiddleware.js';
 
@@ -14,6 +15,7 @@ router.route('/')
     .post(protect, createEntry);
 router.route('/:id')
     .get(protect, getEntryById)
-    .put(protect, updateEntry);
+    .put(protect, updateEntry)
+    .delete(protect, deleteEntry)
 
 export default router;

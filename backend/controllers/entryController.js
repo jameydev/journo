@@ -65,10 +65,9 @@ const updateEntry = asyncHandler(async (req, res) => {
 // @route   DELETE /api/journal/:id
 // @access  Private
 const deleteEntry = asyncHandler(async (req, res) => {
-    const entry = await Entry.findById(req.params.id);
+    const entry = await Entry.findByIdAndDelete(req.params.id);
 
     if (entry) {
-        await entry.remove();
         res.json({ message: 'Entry removed' });
     }
     else {
@@ -80,5 +79,7 @@ const deleteEntry = asyncHandler(async (req, res) => {
 export {
     getEntries,
     getEntryById,
-    createEntry
+    createEntry,
+    updateEntry,
+    deleteEntry
 };

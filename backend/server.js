@@ -4,6 +4,7 @@ import colors from 'colors';
 import cookieParser from 'cookie-parser';
 import connectDB from './config/db.js';
 import userRoutes from './routes/userRoutes.js';
+import entryRoutes from './routes/entryRoutes.js';
 
 // Get database and server configured
 dotenv.config();
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/users', userRoutes);
+app.use('/api/journal', entryRoutes);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`.green.bold);
