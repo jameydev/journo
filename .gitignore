@@ -6,6 +6,7 @@
 node_modules/
 .history/
 .vscode/
+frontend/node_modules/
 
 # Unignore these
 !package.json
@@ -14,3 +15,9 @@ node_modules/
 
 !backend/
 !backend/**/*
+!frontend/
+!frontend/**/*
+!frontend/public/
+!frontend/public/**/*
+!frontend/src/
+!frontend/src/**/*
