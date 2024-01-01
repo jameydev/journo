@@ -1,4 +1,7 @@
-export default function Entry({ title, children }) {
+import { PropTypes } from 'prop-types';
+import { Link } from 'react-router-dom';
+
+export default function Entry({ title, children, _id }) {
     if (!title) {
         title = 'Untitled';
     }
@@ -8,19 +11,25 @@ export default function Entry({ title, children }) {
     }
 
     return (
-        <>
-            <div className="card">
-                <div className="card-title">
-                    <h3>{title}</h3>
-                </div>
-                <div className="card-body">
-                    <p>{children}</p>
-                </div>
-                <div className="card-footer">
-                    <button className="btn btn-primary">Edit</button>
-                    <button className="btn btn-danger">Delete</button>
-                </div>
-            </div>
-        </>
+                <>
+                    <div className="card mt-3">
+                        <div className="card-title mt-2 mx-2">
+                            <h3>{title}</h3>
+                            <Link to={`/journal/${_id}`}>View</Link>
+                        </div>
+                        <div className="card-body">
+                            <p>{children}</p>
+                        </div>
+                        <div className="card-footer">
+                            <button className="btn btn-primary mx-2">Edit</button>
+                            <button className="btn btn-danger mx-2">Delete</button>
+                        </div>
+                    </div>
+                </>
     );
+}
+
+Entry.propTypes = {
+    title: PropTypes.string.isRequired,
+    children: PropTypes.node.isRequired,
 }
