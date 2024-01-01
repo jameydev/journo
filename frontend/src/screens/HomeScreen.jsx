@@ -25,7 +25,7 @@ export default function HomeScreen() {
                 (
                     <>
                         <h1 className="text-center mt-5">
-                            Welcome {userInfo.name}!
+                            Welcome, {userInfo.name}!
                         </h1>
                         <EntryList entries={entries} />
                     </>
