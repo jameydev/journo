@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 
 import FormContainer from '../components/FormContainer';
 import Loader from '../components/Loader';
+import { useAddEntryMutation } from '../slices/entriesApiSlice';
+import { addEntry } from '../slices/entrySlice';
 
 export default function NewEntryScreen() {
     const [title, setTitle] = useState('');
@@ -13,6 +15,16 @@ export default function NewEntryScreen() {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const { userInfo } = useSelector((state) => state.auth);
+
+    const [entry, { isLoading }] = useAddEntryMutation();
+
+    useEffect(() => {
+        if (!userInfo) {
+            navigate('/login');
+        }
+    }, [navigate, userInfo]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -22,7 +34,10 @@ export default function NewEntryScreen() {
         }
         else {
             try {
-                console.log('New entry submitted'); // TODO:
+                const res = await entry({ title, content }).unwrap();
+                dispatch(addEntry({ ...res }));
+                toast.success('Entry added');
+                // navigate(`/journal/${res._id}`);
             }
             catch (err) {
                 toast.error(err?.data?.message || err.error);
