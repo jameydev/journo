@@ -1,9 +1,13 @@
+import { useSelector, useDispatch } from 'react-redux';
 import Hero from '../components/Hero';
+import NewEntryScreen from './NewEntryScreen';
 
 export default function HomeScreen() {
+    const { userInfo } = useSelector(state => state.auth);
+
     return (
         <>
-            <Hero />
+            {userInfo ? <NewEntryScreen /> : <Hero />}
         </>
     );
 }

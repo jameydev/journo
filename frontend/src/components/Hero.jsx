@@ -7,7 +7,7 @@ export default function Hero() {
             <Container className="d-flex justify-content-center">
                 <Card className="p-5 d-flex flex-column align-items-center">
                     <h1 className="text-center mb">
-                        Welcome to JOURNO!
+                        Welcome to JOURN0!
                     </h1>
                     <p className="text-center mb-4">
                         This is a simple private journal

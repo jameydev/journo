@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
-import { FaSignInAlt } from 'react-icons/fa';
+import { FaCog, FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useNavigate } from 'react-router-dom';
@@ -30,7 +30,7 @@ export default function Header() {
             <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
                 <Container>
                     <LinkContainer to="/">
-                        <Navbar.Brand>MERN Auth</Navbar.Brand>
+                        <Navbar.Brand>Journ0</Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -39,9 +39,10 @@ export default function Header() {
                                 <>
                                     <NavDropdown title={userInfo.name} id="username">
                                         <LinkContainer to="/profile">
-                                            <NavDropdown.Item>Profile</NavDropdown.Item>
+                                            <NavDropdown.Item><FaCog /> Profile</NavDropdown.Item>
                                         </LinkContainer>
-                                        <NavDropdown.Item onClick={logoutHandler}>Logout</NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item onClick={logoutHandler}><FaSignOutAlt /> Logout</NavDropdown.Item>
                                     </NavDropdown>
                                 </>
                             ) : (
