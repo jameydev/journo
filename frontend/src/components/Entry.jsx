@@ -1,5 +1,12 @@
-export default function Entry(props) {
-    const title = props.title;
+export default function Entry({ title, children }) {
+    if (!title) {
+        title = 'Untitled';
+    }
+
+    if (!children) {
+        children = 'No content';
+    }
+
     return (
         <>
             <div className="card">
@@ -7,7 +14,7 @@ export default function Entry(props) {
                     <h3>{title}</h3>
                 </div>
                 <div className="card-body">
-                    <p>{props.children}</p>
+                    <p>{children}</p>
                 </div>
                 <div className="card-footer">
                     <button className="btn btn-primary">Edit</button>

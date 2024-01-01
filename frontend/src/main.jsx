@@ -27,6 +27,7 @@ const router = createBrowserRouter(
             <Route path="" element={<PrivateRoute />}>
                 <Route path="/profile" element={<ProfileScreen />} />
                 <Route path="/new-entry" element={<NewEntryScreen />} />
+                {/* <Route path="/journal/:id" element={<Entry>} /> */}
             </Route>
         </Route>
     )

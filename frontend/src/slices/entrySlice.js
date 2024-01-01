@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { updateEntry } from '../../../backend/controllers/entryController';
 
 const initialState = {
     entries: [],

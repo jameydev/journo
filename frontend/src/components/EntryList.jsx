@@ -1,6 +1,7 @@
 import Entry from './Entry';
 
-export default function EntryList({ entries }) {
+export default function EntryList() {
+    
     return (
         <>
             {entries.map(entry => (
