@@ -1,23 +1,34 @@
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import Entry from '../components/Entry';
-export default function EntryScreen(props) {
+import { fetchEntries } from '../slices/entriesSlice';
+
+export default function EntryScreen() {
     const { id } = useParams();
-    const entry = props.entry;
+
+    const dispatch = useDispatch();
+    const entries = useSelector((state) => state.entries);
+    console.log(entries);
+    const entry = entries.find((entry) => entry._id === id);
+    const user = useSelector((state) => state.auth.userInfo);
+
+    useEffect(() => {
+        if (user) {
+            dispatch(fetchEntries(user._id));
+        }
+    }, [dispatch, user]);
+
+    // TO-DO: Add a 404 page or something similar
+    if (!entry) {
+        return <h1>Entry not found</h1>;
+    }
 
     return (
         <>
-            <Entry _id={id} title={entry.title}>
+            <Entry _id={id} title={entry.title} isSingle={true}>
                 {entry.content}
             </Entry>
         </>
     );
 }
-
-EntryScreen.propTypes = {
-    entry: PropTypes.shape({
-        _id: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        content: PropTypes.string.isRequired,
-    }).isRequired,
-};
