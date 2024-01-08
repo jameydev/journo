@@ -1,10 +1,15 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const fetchEntries = createAsyncThunk('entries/fetchEntries', async () => {
-    const response = await axios.get('/api/journal/');
-    return response.data;
-});
+export const fetchEntries = createAsyncThunk(
+    'entries/fetchEntries',
+    async () => {
+        const response = await axios.get('/api/journal/');
+        // debugging
+        console.log(response.data);
+        return response.data;
+    },
+);
 
 const entriesSlice = createSlice({
     name: 'entries',
@@ -14,8 +19,10 @@ const entriesSlice = createSlice({
             state.entries.push(action.payload);
         },
         removeEntry: (state, action) => {
-            state.entries = state.entries.filter(entry => entry._id !== action.payload);
-        }   
+            state.entries = state.entries.filter(
+                (entry) => entry._id !== action.payload,
+            );
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(fetchEntries.fulfilled, (state, action) => {
@@ -24,9 +31,6 @@ const entriesSlice = createSlice({
     },
 });
 
-export const {
-    addEntry,
-    removeEntry
-} = entriesSlice.actions;
+export const { addEntry, removeEntry } = entriesSlice.actions;
 
 export default entriesSlice.reducer;
