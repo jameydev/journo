@@ -23,7 +23,10 @@ export default function Entry({ title, children, _id, isSingle = false }) {
                 <div className='card-footer'>
                     {isSingle && (
                         <Link to='/'>
-                            <button className='btn btn-info mx-4'>Back</button>
+                            <button className='btn btn-info mx-4'>
+                                {' '}
+                                &lt;&lt; Back
+                            </button>
                         </Link>
                     )}
                     <button className='btn btn-primary mx-2'>Edit</button>
