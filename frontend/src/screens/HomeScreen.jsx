@@ -7,7 +7,7 @@ import EntryList from '../components/EntryList';
 
 export default function HomeScreen() {
     const [entries, setEntries] = useState([]);
-    const { userInfo } = useSelector(state => state.auth);
+    const { userInfo } = useSelector((state) => state.auth);
 
     useEffect(() => {
         const fetchEntries = async () => {
@@ -21,17 +21,20 @@ export default function HomeScreen() {
 
     return (
         <>
-            {userInfo ? 
-                (
-                    <>
-                        <h1 className="text-center mt-5">
-                            Welcome, {userInfo.name}!
-                        </h1>
-                        <EntryList entries={entries} />
-                    </>
-                ) :
+            {userInfo ? (
+                <>
+                    <h1 className='text-center mt-5'>
+                        Welcome, {userInfo.name}!
+                    </h1>
+                    <EntryList
+                        entries={entries.sort((entry1, entry2) => {
+                            return entry1.createdAt > entry2.createdAt ? -1 : 1;
+                        })}
+                    />
+                </>
+            ) : (
                 <Hero />
-            }
+            )}
         </>
     );
 }
